@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "nombre": "Entrada Principal",
+    "tipo": "EntradaPrincipal",
+    "posX": 310,
+    "posY": 50
+  },
+  {
+    "id": 2,
+    "nombre": "Biblioteca",
+    "tipo": "Biblioteca",
+    "posX": 180,
+    "posY": 160
+  },
+  {
+    "id": 3,
+    "nombre": "Bloque A - Aulas",
+    "tipo": "BloqueAulas",
+    "posX": 430,
+    "posY": 160
+  },
+  {
+    "id": 4,
+    "nombre": "Soda / Comedor",
+    "tipo": "SodaComedor",
+    "posX": 310,
+    "posY": 260
+  },
+  {
+    "id": 5,
+    "nombre": "Parqueo Principal",
+    "tipo": "Parqueo",
+    "posX": 80,
+    "posY": 80
+  },
+  {
+    "id": 6,
+    "nombre": "Zona Verde / Esparcimiento",
+    "tipo": "ZonaEsparcimiento",
+    "posX": 520,
+    "posY": 280
+  },
+  {
+    "id": 7,
+    "nombre": "Oficinas Administrativas",
+    "tipo": "OficinaAdministrativa",
+    "posX": 180,
+    "posY": 340
+  },
+  {
+    "id": 8,
+    "nombre": "Laboratorio de Cómputo",
+    "tipo": "LabComputo",
+    "posX": 430,
+    "posY": 340
+  },
+  {
+    "id": 9,
+    "nombre": "Bloque B - Aulas",
+    "tipo": "BloqueAulas",
+    "posX": 310,
+    "posY": 160
+  }
+]

@@ -2,5 +2,5 @@
   <Configurations>
     <Platform Name="x64" />
   </Configurations>
-  <Project Path="EcoCampus.vcxproj" />
+  <Project Path="EcoCampus.vcxproj" Id="9277aec5-a38e-41b5-a100-101ab2531f6e" />
 </Solution>

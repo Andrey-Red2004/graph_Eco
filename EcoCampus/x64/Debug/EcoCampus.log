@@ -1,0 +1,19 @@
+﻿   Qt/MSBuild: 3.4.1.0
+   Qt: 6.10.2
+  AlgoritmosGrafo.cpp
+  FileManager.cpp
+C:\Users\Andrey\Source\Repos\EcoCampus\FileManager.cpp(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x930 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+C:\Users\Andrey\Source\Repos\EcoCampus\FileManager.cpp(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0xd3d y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+C:\Users\Andrey\Source\Repos\EcoCampus\FileManager.cpp(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0xe0e y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+C:\Users\Andrey\Source\Repos\EcoCampus\grafo.h(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x4d2 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+  (compilando archivo de origen "AlgoritmosGrafo.cpp")
+  
+C:\Users\Andrey\Source\Repos\EcoCampus\FileManager.h(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x140 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+  (compilando archivo de origen "FileManager.cpp")
+  
+C:\Users\Andrey\Source\Repos\EcoCampus\grafo.h(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x4d2 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+  (compilando archivo de origen "FileManager.cpp")
+  
+  qrc_EcoCampus.cpp
+  moc_EcoCampus.cpp
+  EcoCampus.vcxproj -> C:\Users\Andrey\Source\Repos\EcoCampus\x64\Debug\EcoCampus.exe

@@ -1,0 +1,106 @@
+[
+  {
+    "id": 1,
+    "origen": 1,
+    "destino": 2,
+    "distancia": 85,
+    "acceso": "SoloRampa",
+    "nota": "Entrada principal hacia biblioteca, hay rampa"
+  },
+  {
+    "id": 2,
+    "origen": 1,
+    "destino": 3,
+    "distancia": 70,
+    "acceso": "Normal",
+    "nota": "Entrada principal hacia bloque A"
+  },
+  {
+    "id": 3,
+    "origen": 1,
+    "destino": 5,
+    "distancia": 120,
+    "acceso": "Normal",
+    "nota": "Entrada a parqueo por calle interna"
+  },
+  {
+    "id": 4,
+    "origen": 1,
+    "destino": 9,
+    "distancia": 50,
+    "acceso": "Normal",
+    "nota": "Entrada hacia bloque B central"
+  },
+  {
+    "id": 5,
+    "origen": 2,
+    "destino": 9,
+    "distancia": 60,
+    "acceso": "SoloRampa",
+    "nota": "Biblioteca a bloque B, pasillo cubierto con rampa"
+  },
+  {
+    "id": 6,
+    "origen": 2,
+    "destino": 7,
+    "distancia": 95,
+    "acceso": "Normal",
+    "nota": "Biblioteca a administrativos"
+  },
+  {
+    "id": 7,
+    "origen": 3,
+    "destino": 9,
+    "distancia": 55,
+    "acceso": "SoloGradas",
+    "nota": "Bloque A a bloque B, solo gradas sin rampa"
+  },
+  {
+    "id": 8,
+    "origen": 9,
+    "destino": 4,
+    "distancia": 65,
+    "acceso": "Normal",
+    "nota": "Bloque B hacia soda"
+  },
+  {
+    "id": 9,
+    "origen": 4,
+    "destino": 7,
+    "distancia": 80,
+    "acceso": "Pendiente",
+    "nota": "Soda a administrativos, pendiente suave"
+  },
+  {
+    "id": 10,
+    "origen": 4,
+    "destino": 8,
+    "distancia": 75,
+    "acceso": "Normal",
+    "nota": "Soda a laboratorio de cómputo"
+  },
+  {
+    "id": 11,
+    "origen": 3,
+    "destino": 6,
+    "distancia": 90,
+    "acceso": "Normal",
+    "nota": "Bloque A a zona verde"
+  },
+  {
+    "id": 12,
+    "origen": 6,
+    "destino": 8,
+    "distancia": 60,
+    "acceso": "Normal",
+    "nota": "Zona verde a lab cómputo"
+  },
+  {
+    "id": 13,
+    "origen": 5,
+    "destino": 2,
+    "distancia": 100,
+    "acceso": "Normal",
+    "nota": "Parqueo a biblioteca por acera lateral"
+  }
+]
