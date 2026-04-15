@@ -70,6 +70,9 @@
     <ClCompile Include="FileManager.cpp">
       <Filter>data</Filter>
     </ClCompile>
+    <ClCompile Include="CampusController.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Nodo.h">
@@ -90,6 +93,9 @@
     <ClInclude Include="FileManager.h">
       <Filter>data</Filter>
     </ClInclude>
+    <ClInclude Include="CampusController.h">
+      <Filter>core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
@@ -97,6 +103,9 @@
       <Filter>data</Filter>
     </None>
     <None Include="aristas.json">
+      <Filter>data</Filter>
+    </None>
+    <None Include="Bloqueos.json">
       <Filter>data</Filter>
     </None>
   </ItemGroup>

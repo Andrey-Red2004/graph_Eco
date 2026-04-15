@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="AlgoritmosGrafo.cpp" />
     <ClCompile Include="arista.cpp" />
+    <ClCompile Include="CampusController.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="Grafo.cpp" />
     <ClCompile Include="Nodo.cpp" />
@@ -106,6 +107,7 @@
   <ItemGroup>
     <ClInclude Include="AlgoritmosGrafo.h" />
     <ClInclude Include="arista.h" />
+    <ClInclude Include="CampusController.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="grafo.h" />
     <ClInclude Include="Nodo.h" />
@@ -114,6 +116,7 @@
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="aristas.json" />
+    <None Include="Bloqueos.json" />
     <None Include="nodos.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
