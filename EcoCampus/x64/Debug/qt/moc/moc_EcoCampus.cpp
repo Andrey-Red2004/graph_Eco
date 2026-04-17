@@ -38,10 +38,26 @@ template <> constexpr inline auto EcoCampus::qt_create_metaobjectdata<qt_meta_ta
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "EcoCampus"
+        "EcoCampus",
+        "on_btnDFS_clicked",
+        "",
+        "on_btnBFS_clicked",
+        "on_chkMovilidad_stateChanged",
+        "state",
+        "onSceneSelectionChanged"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Slot 'on_btnDFS_clicked'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_btnBFS_clicked'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'on_chkMovilidad_stateChanged'
+        QtMocHelpers::SlotData<void(int)>(4, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 5 },
+        }}),
+        // Slot 'onSceneSelectionChanged'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,10 +79,15 @@ Q_CONSTINIT const QMetaObject EcoCampus::staticMetaObject = { {
 void EcoCampus::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<EcoCampus *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
-    (void)_a;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->on_btnDFS_clicked(); break;
+        case 1: _t->on_btnBFS_clicked(); break;
+        case 2: _t->on_chkMovilidad_stateChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 3: _t->onSceneSelectionChanged(); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObject *EcoCampus::metaObject() const
@@ -85,6 +106,18 @@ void *EcoCampus::qt_metacast(const char *_clname)
 int EcoCampus::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 4)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 4;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 4)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 4;
+    }
     return _id;
 }
 QT_WARNING_POP

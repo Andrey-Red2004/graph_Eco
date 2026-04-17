@@ -108,5 +108,10 @@
     <None Include="Bloqueos.json">
       <Filter>data</Filter>
     </None>
+    <None Include="enunciado.pdf" />
+    <None Include=".github\copilot-instructions.md" />
+    <None Include="Centro de Referencia-A03a.pdf" />
+    <None Include="Comedor A-04.pdf" />
+    <None Include="Edificio Aulas A-04.pdf" />
   </ItemGroup>
 </Project>

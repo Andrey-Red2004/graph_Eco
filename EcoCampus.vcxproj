@@ -37,7 +37,7 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.10.2_msvc2022_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;qml;widgets</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
@@ -114,10 +114,15 @@
     <ClInclude Include="temporizador.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".github\copilot-instructions.md" />
     <None Include=".gitignore" />
     <None Include="aristas.json" />
     <None Include="Bloqueos.json" />
+    <None Include="Centro de Referencia-A03a.pdf" />
+    <None Include="Comedor A-04.pdf" />
+    <None Include="Edificio Aulas A-04.pdf" />
     <None Include="nodos.json" />
+    <None Include="enunciado.pdf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
