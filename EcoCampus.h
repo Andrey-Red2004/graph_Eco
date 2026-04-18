@@ -17,6 +17,7 @@ private:
     Ui::EcoCampusClass ui;
     CampusController controller_;
     QGraphicsScene* scene_ = nullptr;
+    bool updatePending_ = false;
 
     void dibujarGrafo();
 

@@ -11,6 +11,8 @@
 #include <QPixmap>
 #include <QFileInfo>
 #include <QDebug>
+#include <QSignalBlocker>
+#include <QTimer>
 
 EcoCampus::EcoCampus(QWidget *parent)
     : QMainWindow(parent)
@@ -36,6 +38,8 @@ EcoCampus::~EcoCampus()
 {}
 
 void EcoCampus::dibujarGrafo() {
+    const QSignalBlocker blocker(scene_);
+
     scene_->clear();
 
     const Grafo& g = controller_.getGrafo();
@@ -113,13 +117,25 @@ void EcoCampus::onSceneSelectionChanged() {
     if (selected.isEmpty()) return;
 
     for (auto* item : selected) {
-        const int id = item->data(0).toInt();
+        if (!item) continue;
+        const auto data = item->data(0);
+        if (!data.isValid()) continue;
+
+        bool ok = false;
+        const int id = data.toInt(&ok);
+        if (!ok) continue;
+
         const Nodo* n = controller_.getGrafo().buscarNodo(id);
         if (!n) continue;
         controller_.bloquearNodo(id, !n->isBloqueado());
     }
 
-    scene_->clearSelection();
-    dibujarGrafo();
+    if (!updatePending_) {
+        updatePending_ = true;
+        QTimer::singleShot(0, this, [this]() {
+            updatePending_ = false;
+            dibujarGrafo();
+        });
+    }
 }
 
