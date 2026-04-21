@@ -3,8 +3,15 @@
   moc EcoCampus.h
   EcoCampus.cpp
   main.cpp
-C:\Users\Andrey\Source\Repos\EcoCampus\EcoCampus.cpp(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0xaa7 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
-C:\Users\Andrey\Source\Repos\EcoCampus\EcoCampus.cpp(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0xc15 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+C:\Users\Andrey\Source\Repos\EcoCampus\EcoCampus.cpp(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0xeb0 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+C:\Users\Andrey\Source\Repos\EcoCampus\EcoCampus.cpp(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x2d34 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+C:\Users\Andrey\Source\Repos\EcoCampus\EcoCampus.cpp(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x2f0a y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+C:\Users\Andrey\Source\Repos\EcoCampus\EcoCampus.h(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x8aa y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+  (compilando archivo de origen "main.cpp")
+  
+C:\Users\Andrey\Source\Repos\EcoCampus\EcoCampus.h(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x8aa y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+  (compilando archivo de origen "EcoCampus.cpp")
+  
 C:\Users\Andrey\Source\Repos\EcoCampus\grafo.h(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x4d2 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
   (compilando archivo de origen "main.cpp")
   
@@ -27,6 +34,9 @@ C:\Users\Andrey\Source\Repos\EcoCampus\temporizador.h(1,1): warning C4828: El ar
   (compilando archivo de origen "EcoCampus.cpp")
   
   moc_EcoCampus.cpp
+C:\Users\Andrey\Source\Repos\EcoCampus\EcoCampus.h(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x8aa y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
+  (compilando archivo de origen "EcoCampus/x64/Debug/qt/moc/moc_EcoCampus.cpp")
+  
 C:\Users\Andrey\Source\Repos\EcoCampus\grafo.h(1,1): warning C4828: El archivo contiene un carácter que comienza en el desplazamiento 0x4d2 y que no es válido en el juego de caracteres del origen actual (página de códigos 65001).
   (compilando archivo de origen "EcoCampus/x64/Debug/qt/moc/moc_EcoCampus.cpp")
   

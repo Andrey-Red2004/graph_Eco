@@ -114,4 +114,30 @@
     <None Include="Comedor A-04.pdf" />
     <None Include="Edificio Aulas A-04.pdf" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="biblioteca.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="comedor.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="piso 1.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="piso 2.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="piso 3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="piso 4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="piso 5.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Universidad.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>
