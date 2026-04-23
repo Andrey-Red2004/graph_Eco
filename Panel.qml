@@ -5,13 +5,14 @@ import QtQuick.Controls.Material 2.15
 
 Rectangle {
     id: root
-    color: "#eef2f9"
+    color: "#0f1115"
     radius: 14
 
-    Material.theme: Material.Light
-    Material.accent: "#4f7cff"
+    Material.theme: Material.Dark
+    Material.accent: "#6ea0ff"
 
     property var pisos: ["Universidad", "Piso 1", "Piso 2", "Piso 3", "Piso 4", "Piso 5"]
+    property var perfiles: ["Regular", "Nuevo"]
 
     ScrollView {
         anchors.fill: parent
@@ -24,9 +25,9 @@ Rectangle {
 
             Rectangle {
                 Layout.fillWidth: true
-                color: "#ffffff"
+                color: "#171b22"
                 radius: 12
-                border.color: "#d9e0ee"
+                border.color: "#2a2f3a"
                 implicitHeight: 64
 
                 RowLayout {
@@ -38,7 +39,7 @@ Rectangle {
                         width: 10
                         height: 36
                         radius: 6
-                        color: "#4f7cff"
+                        color: "#6ea0ff"
                     }
 
                     ColumnLayout {
@@ -47,12 +48,12 @@ Rectangle {
                             text: "EcoCampus"
                             font.pixelSize: 18
                             font.bold: true
-                            color: "#1f2a44"
+                            color: "#f4f6fb"
                         }
                         Text {
                             text: "Control de recorridos"
                             font.pixelSize: 12
-                            color: "#6c7a96"
+                            color: "#9aa6c3"
                         }
                     }
                 }
@@ -60,9 +61,9 @@ Rectangle {
 
             Rectangle {
                 Layout.fillWidth: true
-                color: "#ffffff"
+                color: "#171b22"
                 radius: 12
-                border.color: "#d9e0ee"
+                border.color: "#2a2f3a"
                 Layout.preferredHeight: 160
 
                 ColumnLayout {
@@ -73,7 +74,7 @@ Rectangle {
                     Text {
                         text: "Mapa"
                         font.pixelSize: 13
-                        color: "#6c7a96"
+                        color: "#9aa6c3"
                     }
 
                     ComboBox {
@@ -106,9 +107,9 @@ Rectangle {
 
             Rectangle {
                 Layout.fillWidth: true
-                color: "#ffffff"
+                color: "#171b22"
                 radius: 12
-                border.color: "#d9e0ee"
+                border.color: "#2a2f3a"
                 Layout.preferredHeight: 160
 
                 ColumnLayout {
@@ -119,7 +120,7 @@ Rectangle {
                     Text {
                         text: "Inicio"
                         font.pixelSize: 13
-                        color: "#6c7a96"
+                        color: "#9aa6c3"
                     }
 
                     SpinBox {
@@ -159,9 +160,9 @@ Rectangle {
 
             Rectangle {
                 Layout.fillWidth: true
-                color: "#ffffff"
+                color: "#171b22"
                 radius: 12
-                border.color: "#d9e0ee"
+                border.color: "#2a2f3a"
                 Layout.preferredHeight: 110
 
                 ColumnLayout {
@@ -172,20 +173,20 @@ Rectangle {
                     Text {
                         text: "Resultados"
                         font.pixelSize: 13
-                        color: "#6c7a96"
+                        color: "#9aa6c3"
                     }
 
                     RowLayout {
                         Layout.fillWidth: true
                         Text {
                             text: "Tiempo"
-                            color: "#1f2a44"
+                            color: "#f4f6fb"
                             font.pixelSize: 13
                         }
                         Item { Layout.fillWidth: true }
                         Text {
                             text: bridge.tiempo
-                            color: "#4f7cff"
+                            color: "#6ea0ff"
                             font.pixelSize: 13
                             font.bold: true
                         }
@@ -195,13 +196,13 @@ Rectangle {
                         Layout.fillWidth: true
                         Text {
                             text: "Visitados"
-                            color: "#1f2a44"
+                            color: "#f4f6fb"
                             font.pixelSize: 13
                         }
                         Item { Layout.fillWidth: true }
                         Text {
                             text: bridge.visitados
-                            color: "#4f7cff"
+                            color: "#6ea0ff"
                             font.pixelSize: 13
                             font.bold: true
                         }
@@ -211,9 +212,9 @@ Rectangle {
 
             Rectangle {
                 Layout.fillWidth: true
-                color: "#ffffff"
+                color: "#171b22"
                 radius: 12
-                border.color: "#d9e0ee"
+                border.color: "#2a2f3a"
                 Layout.preferredHeight: 64
 
                 RowLayout {
@@ -229,7 +230,89 @@ Rectangle {
                 }
             }
 
+            Rectangle {
+                Layout.fillWidth: true
+                color: "#171b22"
+                radius: 12
+                border.color: "#2a2f3a"
+                Layout.preferredHeight: 200
+
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: 14
+                    spacing: 10
+
+                    Text {
+                        text: "Ruta entre puntos"
+                        font.pixelSize: 13
+                        color: "#9aa6c3"
+                    }
+
+                    RowLayout {
+                        Layout.fillWidth: true
+                        spacing: 10
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            Text { text: "Origen"; font.pixelSize: 12; color: "#9aa6c3" }
+                            SpinBox {
+                                from: 1
+                                value: bridge.origen
+                                editable: true
+                                Layout.fillWidth: true
+                                implicitHeight: 36
+                                onValueChanged: {
+                                    if (bridge.origen !== value)
+                                        bridge.origen = value
+                                }
+                            }
             Item { Layout.fillHeight: true }
+                        }
+
+                        ColumnLayout {
+                            Layout.fillWidth: true
+                            Text { text: "Destino"; font.pixelSize: 12; color: "#9aa6c3" }
+                            SpinBox {
+                                from: 1
+                                value: bridge.destino
+                                editable: true
+                                Layout.fillWidth: true
+                                implicitHeight: 36
+                                onValueChanged: {
+                                    if (bridge.destino !== value)
+                                        bridge.destino = value
+                                }
+                            }
+                        }
+                    }
+
+                    ComboBox {
+                        model: perfiles
+                        Layout.fillWidth: true
+                        currentIndex: perfiles.indexOf(bridge.perfilRuta)
+                        onCurrentTextChanged: bridge.perfilRuta = currentText
+                    }
+
+                    RowLayout {
+                        Layout.fillWidth: true
+                        spacing: 10
+
+                        Button {
+                            text: "Buscar camino"
+                            Layout.fillWidth: true
+                            implicitHeight: 36
+                            onClicked: bridge.requestBuscarCamino()
+                        }
+
+                        Button {
+                            text: "Ruta por perfil"
+                            Layout.fillWidth: true
+                            implicitHeight: 36
+                            onClicked: bridge.requestRutaPerfil()
+                        }
+                    }
+                }
+            }
         }
     }
 }

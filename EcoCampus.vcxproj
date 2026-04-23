@@ -117,12 +117,35 @@
     <None Include=".github\copilot-instructions.md" />
     <None Include=".gitignore" />
     <None Include="aristas.json" />
+    <None Include="aristas_biblioteca.json" />
+    <None Include="aristas_comedor.json" />
+    <None Include="aristas_piso_1.json" />
+    <None Include="aristas_piso_2.json" />
+    <None Include="aristas_piso_3.json" />
+    <None Include="aristas_piso_4.json" />
+    <None Include="aristas_piso_5.json" />
     <None Include="Bloqueos.json" />
     <None Include="Centro de Referencia-A03a.pdf" />
     <None Include="Comedor A-04.pdf" />
     <None Include="Edificio Aulas A-04.pdf" />
     <None Include="nodos.json" />
     <None Include="enunciado.pdf" />
+    <None Include="nodos_biblioteca.json" />
+    <None Include="nodos_comedor.json" />
+    <None Include="nodos_piso_1.json" />
+    <None Include="nodos_piso_2.json" />
+    <None Include="nodos_piso_3.json" />
+    <None Include="nodos_piso_4.json" />
+    <None Include="nodos_piso_5.json" />
+    <None Include="planos_universidad.html" />
+    <None Include="plano_biblioteca.svg" />
+    <None Include="plano_comedor.svg" />
+    <None Include="plano_piso1.svg" />
+    <None Include="plano_piso2.svg" />
+    <None Include="plano_piso3.svg" />
+    <None Include="plano_piso4.svg" />
+    <None Include="plano_piso5.svg" />
+    <None Include="plano_sitio.svg" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="biblioteca.png" />

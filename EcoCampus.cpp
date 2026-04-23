@@ -45,6 +45,7 @@ QString resolverRutaImagen(const QString& archivo) {
 
     return archivo;
 }
+
 }
 
 UiBridge::UiBridge(QObject* parent)
@@ -76,6 +77,24 @@ void UiBridge::setMovilidadReducida(bool value) {
     emit movilidadReducidaChanged(movilidadReducida_);
 }
 
+void UiBridge::setOrigen(int value) {
+    if (origen_ == value) return;
+    origen_ = value;
+    emit origenChanged();
+}
+
+void UiBridge::setDestino(int value) {
+    if (destino_ == value) return;
+    destino_ = value;
+    emit destinoChanged();
+}
+
+void UiBridge::setPerfilRuta(const QString& value) {
+    if (perfilRuta_ == value) return;
+    perfilRuta_ = value;
+    emit perfilRutaChanged();
+}
+
 void UiBridge::setPisoActual(const QString& value) {
     if (pisoActual_ == value) return;
     pisoActual_ = value;
@@ -102,6 +121,14 @@ void UiBridge::requestBfs() {
     emit bfsRequested();
 }
 
+void UiBridge::requestBuscarCamino() {
+    emit buscarCaminoRequested();
+}
+
+void UiBridge::requestRutaPerfil() {
+    emit rutaPerfilRequested();
+}
+
 EcoCampus::EcoCampus(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -111,7 +138,7 @@ EcoCampus::EcoCampus(QWidget *parent)
     ui.graphicsView->setScene(scene_);
     ui.graphicsView->setRenderHint(QPainter::Antialiasing, true);
     configurarInteraccionVista();
-    ui.centralWidget->setStyleSheet("background: #eef2f9;");
+    ui.centralWidget->setStyleSheet("background: #0f1115;");
     configurarPanelQml();
 
     connect(scene_, &QGraphicsScene::selectionChanged,
@@ -133,7 +160,7 @@ void EcoCampus::configurarInteraccionVista() {
     ui.graphicsView->setResizeAnchor(QGraphicsView::AnchorUnderMouse);
     ui.graphicsView->setDragMode(QGraphicsView::NoDrag);
     ui.graphicsView->viewport()->installEventFilter(this);
-    ui.graphicsView->setStyleSheet("background: #f4f6fb; border: 1px solid #d9e0ee; border-radius: 12px;");
+    ui.graphicsView->setStyleSheet("background: #0f1115; border: 1px solid #2a2f3a; border-radius: 12px;");
 }
 
 void EcoCampus::configurarPanelQml() {
@@ -142,6 +169,9 @@ void EcoCampus::configurarPanelQml() {
     uiBridge_->setTiempo("0 µs");
     uiBridge_->setVisitados("0");
     uiBridge_->setMovilidadReducida(false);
+    uiBridge_->setOrigen(1);
+    uiBridge_->setDestino(1);
+    uiBridge_->setPerfilRuta("Regular");
     uiBridge_->setPisoActual("Universidad");
     uiBridge_->setMostrarBiblioteca(false);
     uiBridge_->setMostrarComedor(false);
@@ -164,7 +194,10 @@ void EcoCampus::configurarPanelQml() {
 
     connect(uiBridge_, &UiBridge::dfsRequested, this, &EcoCampus::on_btnDFS_clicked);
     connect(uiBridge_, &UiBridge::bfsRequested, this, &EcoCampus::on_btnBFS_clicked);
+    connect(uiBridge_, &UiBridge::buscarCaminoRequested, this, &EcoCampus::onBuscarCamino_clicked);
+    connect(uiBridge_, &UiBridge::rutaPerfilRequested, this, &EcoCampus::onRutaPerfil_clicked);
     connect(uiBridge_, &UiBridge::movilidadReducidaChanged, this, &EcoCampus::onMovilidadChanged);
+    connect(uiBridge_, &UiBridge::perfilRutaChanged, this, &EcoCampus::onPerfilRutaChanged);
     connect(uiBridge_, &UiBridge::pisoActualChanged, this, &EcoCampus::actualizarCapasMapa);
     connect(uiBridge_, &UiBridge::mostrarBibliotecaChanged, this, &EcoCampus::actualizarCapasMapa);
     connect(uiBridge_, &UiBridge::mostrarComedorChanged, this, &EcoCampus::actualizarCapasMapa);
@@ -224,6 +257,17 @@ void EcoCampus::actualizarCapasMapa() {
     if (!uiBridge_) return;
 
     const QString piso = uiBridge_->pisoActual();
+    QString mapaGrafo = piso;
+    if (!controller_.setMapaActivo(piso.toStdString()))
+        mapaGrafo = mapaActual_;
+
+    if (mapaGrafo != mapaActual_) {
+        mapaActual_ = mapaGrafo;
+        vistaAjustada_ = false;
+        dibujarGrafo();
+        return;
+    }
+
     for (auto it = mapLayers_.begin(); it != mapLayers_.end(); ++it)
         it.value()->setVisible(false);
 
@@ -238,6 +282,21 @@ void EcoCampus::actualizarCapasMapa() {
 
     if (uiBridge_->mostrarComedor() && mapLayers_.contains("Comedor"))
         mapLayers_.value("Comedor")->setVisible(true);
+
+    if (!vistaAjustada_) {
+        ajustarVistaMapa(piso == "Universidad" ? "Universidad" : piso);
+        vistaAjustada_ = true;
+    }
+}
+
+void EcoCampus::ajustarVistaMapa(const QString& mapaId) {
+    if (!mapLayers_.contains(mapaId)) return;
+    auto* item = mapLayers_.value(mapaId);
+    const QRectF rect = item->sceneBoundingRect();
+    if (rect.isEmpty()) return;
+
+    ui.graphicsView->resetTransform();
+    ui.graphicsView->fitInView(rect, Qt::KeepAspectRatio);
 }
 
 void EcoCampus::dibujarGrafo() {
@@ -269,19 +328,33 @@ void EcoCampus::dibujarGrafo() {
     };
 
     for (const auto& fondo : fondos) {
-        if (!QFileInfo::exists(fondo.ruta)) continue;
-        QPixmap mapa(fondo.ruta);
+        QString ruta = fondo.ruta;
+        if (!QFileInfo::exists(ruta)) {
+            qWarning() << "No se encontro" << ruta;
+            continue;
+        }
+
+        QPixmap mapa(ruta);
         if (mapa.isNull()) continue;
 
-        auto* pix = scene_->addPixmap(mapa);
-        pix->setPos(fondo.posicion);
-        pix->setZValue(fondo.z);
+        auto* item = scene_->addPixmap(mapa);
+        item->setPos(fondo.posicion);
+        item->setZValue(fondo.z);
         if (fondo.seleccionable)
-            pix->setFlag(QGraphicsItem::ItemIsSelectable, true);
+            item->setFlag(QGraphicsItem::ItemIsSelectable, true);
         if (fondo.movible)
-            pix->setFlag(QGraphicsItem::ItemIsMovable, true);
+            item->setFlag(QGraphicsItem::ItemIsMovable, true);
 
-        mapLayers_.insert(fondo.id, pix);
+        mapLayers_.insert(fondo.id, item);
+    }
+
+    if (mapLayers_.contains("Piso 4") && mapLayers_.contains("Comedor")) {
+        auto* piso4 = mapLayers_.value("Piso 4");
+        auto* comedor = mapLayers_.value("Comedor");
+        const qreal gap = 4.0;
+        const QRectF pisoRect = piso4->boundingRect();
+        const QRectF comedorRect = comedor->boundingRect();
+        comedor->setPos(piso4->pos().x() - comedorRect.width() - gap, piso4->pos().y());
     }
 
     actualizarCapasMapa();
@@ -363,6 +436,49 @@ void EcoCampus::onMovilidadChanged(bool enabled) {
     controller_.setPerfil(enabled
         ? PerfilUsuario::MovilidadReducida
         : PerfilUsuario::EstudianteRegular);
+    dibujarGrafo();
+}
+
+void EcoCampus::onPerfilRutaChanged() {
+    if (!uiBridge_) return;
+
+    if (uiBridge_->movilidadReducida()) {
+        controller_.setPerfil(PerfilUsuario::MovilidadReducida);
+        return;
+    }
+
+    if (uiBridge_->perfilRuta() == "Nuevo")
+        controller_.setPerfil(PerfilUsuario::EstudianteNuevo);
+    else
+        controller_.setPerfil(PerfilUsuario::EstudianteRegular);
+}
+
+void EcoCampus::onBuscarCamino_clicked() {
+    const int origenId = uiBridge_ ? uiBridge_->origen() : 1;
+    const int destinoId = uiBridge_ ? uiBridge_->destino() : 1;
+    auto res = controller_.buscarCamino(origenId, destinoId);
+
+    if (uiBridge_) {
+        uiBridge_->setTiempo(QString::number(res.tiempoMicros) + " µs");
+        uiBridge_->setVisitados(QString::number(res.nodosVisitados));
+    }
+
+    rutaActual_ = res.encontrado ? res.camino : std::vector<int>{};
+    dibujarGrafo();
+}
+
+void EcoCampus::onRutaPerfil_clicked() {
+    const int origenId = uiBridge_ ? uiBridge_->origen() : 1;
+    const int destinoId = uiBridge_ ? uiBridge_->destino() : 1;
+    onPerfilRutaChanged();
+    auto res = controller_.calcularRuta(origenId, destinoId);
+
+    if (uiBridge_) {
+        uiBridge_->setTiempo(QString::number(res.tiempoMicros) + " µs");
+        uiBridge_->setVisitados(QString::number(res.camino.size()));
+    }
+
+    rutaActual_ = res.encontrado ? res.camino : std::vector<int>{};
     dibujarGrafo();
 }
 

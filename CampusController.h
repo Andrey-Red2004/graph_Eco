@@ -4,6 +4,7 @@
 #include "FileManager.h"
 #include <string>
 #include <vector>
+#include <unordered_map>
 
 // Perfil activo del usuario (afecta algoritmos y pesos)
 enum class PerfilUsuario {
@@ -26,7 +27,8 @@ public:
     PerfilUsuario getPerfil() const { return perfil_; }
 
     // ── Acceso al grafo (solo lectura para la UI) ─────────────────────────────
-    const Grafo& getGrafo() const { return grafo_; }
+    const Grafo& getGrafo() const;
+    bool setMapaActivo(const std::string& mapaId);
 
     // ── Módulos del sistema ───────────────────────────────────────────────────
 
@@ -62,7 +64,8 @@ public:
     const std::vector<int>& getPuntosReferencia() const { return puntosRef_; }
 
 private:
-    Grafo          grafo_;
+    std::unordered_map<std::string, Grafo> grafos_;
+    std::string    mapaActivo_ = "Universidad";
     PerfilUsuario  perfil_ = PerfilUsuario::EstudianteRegular;
     std::string    dirDatos_;
     std::vector<int> puntosRef_ = { 2, 4 }; // Biblioteca y Soda por defecto

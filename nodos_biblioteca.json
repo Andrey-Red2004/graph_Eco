@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "Entrada Biblioteca",
+    "tipo": "EntradaPrincipal",
+    "posX": 160,
+    "posY": 120
+  },
+  {
+    "id": 2,
+    "nombre": "Sala de Lectura",
+    "tipo": "Biblioteca",
+    "posX": 320,
+    "posY": 120
+  },
+  {
+    "id": 3,
+    "nombre": "Zona de Computo",
+    "tipo": "LabComputo",
+    "posX": 320,
+    "posY": 280
+  },
+  {
+    "id": 4,
+    "nombre": "Recepcion",
+    "tipo": "OficinaAdministrativa",
+    "posX": 160,
+    "posY": 280
+  }
+]

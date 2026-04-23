@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "Entrada Comedor",
+    "tipo": "SodaComedor",
+    "posX": 160,
+    "posY": 120
+  },
+  {
+    "id": 2,
+    "nombre": "Zona Mesas",
+    "tipo": "ZonaEsparcimiento",
+    "posX": 320,
+    "posY": 120
+  },
+  {
+    "id": 3,
+    "nombre": "Cocina",
+    "tipo": "SodaComedor",
+    "posX": 320,
+    "posY": 280
+  },
+  {
+    "id": 4,
+    "nombre": "Caja",
+    "tipo": "OficinaAdministrativa",
+    "posX": 160,
+    "posY": 280
+  }
+]

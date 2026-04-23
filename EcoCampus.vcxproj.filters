@@ -113,6 +113,20 @@
     <None Include="Centro de Referencia-A03a.pdf" />
     <None Include="Comedor A-04.pdf" />
     <None Include="Edificio Aulas A-04.pdf" />
+    <None Include="nodos_piso_1.json" />
+    <None Include="nodos_piso_2.json" />
+    <None Include="aristas_piso_2.json" />
+    <None Include="aristas_piso_1.json" />
+    <None Include="aristas_piso_4.json" />
+    <None Include="nodos_piso_3.json" />
+    <None Include="aristas_piso_3.json" />
+    <None Include="nodos_piso_4.json" />
+    <None Include="nodos_piso_5.json" />
+    <None Include="nodos_biblioteca.json" />
+    <None Include="aristas_piso_5.json" />
+    <None Include="aristas_biblioteca.json" />
+    <None Include="aristas_comedor.json" />
+    <None Include="nodos_comedor.json" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="biblioteca.png">

@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "Aula 101",
+    "tipo": "BloqueAulas",
+    "posX": 120,
+    "posY": 120
+  },
+  {
+    "id": 2,
+    "nombre": "Aula 102",
+    "tipo": "BloqueAulas",
+    "posX": 320,
+    "posY": 120
+  },
+  {
+    "id": 3,
+    "nombre": "Lab 1",
+    "tipo": "LabComputo",
+    "posX": 320,
+    "posY": 320
+  },
+  {
+    "id": 4,
+    "nombre": "Oficina Piso 1",
+    "tipo": "OficinaAdministrativa",
+    "posX": 120,
+    "posY": 320
+  }
+]

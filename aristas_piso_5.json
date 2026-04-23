@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "origen": 1,
+    "destino": 2,
+    "distancia": 15,
+    "acceso": "Normal"
+  },
+  {
+    "id": 2,
+    "origen": 2,
+    "destino": 3,
+    "distancia": 20,
+    "acceso": "Normal"
+  },
+  {
+    "id": 3,
+    "origen": 3,
+    "destino": 4,
+    "distancia": 15,
+    "acceso": "Normal"
+  },
+  {
+    "id": 4,
+    "origen": 4,
+    "destino": 1,
+    "distancia": 20,
+    "acceso": "Normal"
+  }
+]
